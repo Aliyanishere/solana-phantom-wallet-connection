@@ -14,6 +14,9 @@ import {
 import "./App.css";
 import "@solana/wallet-adapter-react-ui/styles.css";
 
+//components
+import AccountInfo from "./components/account-info";
+
 function App() {
   const networks = [
     {
@@ -24,11 +27,13 @@ function App() {
   ];
   const endpoint = clusterApiUrl("devnet");
   const walletAdapter = new PhantomWalletAdapter();
+
   return (
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={[walletAdapter]} autoConnect networks={networks}>
         <WalletModalProvider>
           <WalletMultiButton />
+          <AccountInfo />
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
